@@ -39,7 +39,7 @@ class Server:
             }
         return self.__indexed_dataset
 
-    def get_hyper_index(self, index: int, page_size: int = 10) -> Dict:
+    def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """Returns a dictionary containing information about the data
         """
         total_data = self.indexed_dataset()
@@ -49,7 +49,7 @@ class Server:
         i = index
         j = page_size
 
-        assert n >= index
+        assert index is not None and index >= 0 and n >= index
 
         while n >= i:
             if (i not in total_data):
